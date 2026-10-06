@@ -4,8 +4,10 @@ import './App.css';
 
 // const URL_HUB_SIGNALR = import.meta.env.VITE_API_SIGNALR_URL || 'https://localhost:7001/painelHub';
 // const URL_HUB_SIGNALR = import.meta.env.VITE_API_SIGNALR_URL || 'https://painel-50bm.onrender.com/painelHub';
-// Substitua a linha antiga por esta linha direta:
-const URL_HUB_SIGNALR = 'https://onrender.com'; //
+
+const URL_HUB_SIGNALR = 'https://onrender.com';
+
+
 
 
 
