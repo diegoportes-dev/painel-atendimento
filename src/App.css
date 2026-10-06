@@ -1,0 +1,255 @@
+/* Reset básico para garantir ocupação de 100% da tela */
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f8fafc;
+  font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Container Principal */
+.painel-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.painel-container.esconder-cursor {
+  cursor: none !important;
+}
+.painel-container.esconder-cursor * {
+  cursor: none !important;
+}
+
+/* 🔊 Botão União do Som/Voz Flutuante e Translúcido */
+.botao-audio-controle {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  z-index: 100;
+  width: 70px;
+  height: 70px;
+  font-size: 2.2rem;
+  background-color: rgba(255, 255, 255, 0.25); /* Bastante transparente por padrão */
+  border: 2px solid rgba(14, 165, 233, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(4px); /* Desfoque sutil sob o botão */
+  transition: all 0.2s ease-in-out;
+  opacity: 0.6; /* Translúcido inicial */
+}
+
+/* Efeito Hover: ganha destaque visual quando o usuário aproxima o mouse */
+.botao-audio-controle:hover {
+  opacity: 1 !important;
+  background-color: rgba(255, 255, 255, 0.95);
+  border-color: #0ea5e9;
+  transform: scale(1.05);
+  box-shadow: 0 6px 15px rgba(14, 165, 233, 0.2);
+}
+
+.botao-audio-controle.mutado {
+  background-color: rgba(254, 226, 226, 0.4);
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.botao-audio-controle.mutado:hover {
+  background-color: #fee2e2;
+  border-color: #ef4444;
+}
+
+/* Esconde completamente o botão quando a tela entrar em modo de repouso/mouse oculto */
+.botao-audio-controle.ocultar-controles {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+/* Área de Destaque da Senha Atual */
+.bloco-principal {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  position: relative;
+  border: 6px solid #0284c7; 
+  margin: 20px 20px 10px 20px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.1);
+}
+
+.tag-prioridade {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #059669;
+  letter-spacing: 2px;
+  margin-bottom: -10px;
+}
+
+.tag-prioridade.preferencial {
+  color: #dc2626;
+}
+
+.numero-principal {
+  font-size: 15rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin: 0;
+  line-height: 1;
+}
+
+.guiche-principal {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #0284c7;
+  margin: 0;
+}
+
+.cliente-principal {
+  font-size: 5rem;
+  font-weight: 700;
+  color: #334155; 
+  margin-top: 50px; 
+  letter-spacing: 1px;
+}
+
+.aguardando {
+  font-size: 3rem;
+  color: #64748b;
+  font-weight: bold;
+}
+
+/* Área do Histórico de Senhas Chamadas */
+.bloco-historico {
+  flex: 1;
+  background-color: #f1f5f9;
+  padding: 10px 40px 20px 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.titulo-historico {
+  color: #334155;
+  font-size: 1.5rem;
+  margin: 0 0 15px 0;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.lista-historico {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: 100%;
+}
+
+.item-historico {
+  flex: 1;
+  background-color: #ffffff; 
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border: 3px solid #0f172a;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.item-historico.vazio {
+  color: #64748b;
+  font-style: italic;
+  font-size: 1.5rem;
+  border: 3px dashed #94a3b8; 
+  background-color: transparent;
+}
+
+.hist-numero {
+  font-size: 3.2rem;
+  font-weight: 800;
+  color: #0f172a; 
+}
+
+/* ➔ CORREÇÃO: Aplica margem e espaçamento maior para afastar a seta do número */
+.hist-separador {
+  color: #0284c7;
+  font-size: 1.4rem;
+  margin: 12px 0 6px 0; /* Aumentado de 2px para 12px de distância superior */
+}
+
+.hist-guiche {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #475569;
+}
+
+/* 🟢 Quadrado Verde */
+.item-historico.quadrado-verde {
+  background-color: #22c55e !important; 
+}
+
+.item-historico.quadrado-verde .hist-numero,
+.item-historico.quadrado-verde .hist-separador,
+.item-historico.quadrado-verde .hist-guiche {
+  color: #ffffff !important;
+}
+
+/* 🔴 Quadrado Branco */
+.item-historico.quadrado-vermelho {
+  background-color: #ffffff !important; 
+  position: relative;
+  z-index: 1;
+}
+
+.item-historico.quadrado-vermelho .hist-numero,
+.item-historico.quadrado-vermelho .hist-separador,
+.item-historico.quadrado-vermelho .hist-guiche {
+  color: #0f172a !important;
+  z-index: 2;
+}
+
+/* ✕ O X Vermelho expandido de fundo */
+.x-vermelho {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14rem;
+  font-weight: 300;
+  color: rgba(239, 68, 68, 0.25);
+  pointer-events: none;
+  line-height: 1;
+  z-index: -1;
+}
+
+/* Animação de Alerta Visual */
+.alerta-animacao {
+  animation: piscarInformacoes 0.5s ease-in-out infinite alternate;
+}
+
+@keyframes piscarInformacoes {
+  0% { 
+    background-color: #ffffff;
+    opacity: 1;
+  }
+  100% { 
+    background-color: #f0f9ff;
+    opacity: 0.6;
+  }
+}
